@@ -1,11 +1,14 @@
 import React from "react";
+import Home from "./pages/Home";  
+import Auth from "./pages/Auth";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to InterviewIQ.AI</h1>
-      <p>Your ultimate interview preparation companion.</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/auth" element={<Auth />} />
+    </Routes>
   );
 }
 
