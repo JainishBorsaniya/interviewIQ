@@ -4,8 +4,18 @@ import { IoSparkles } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../utils/firebase";
 
 function Auth() {
+  const handleGoogleAuth = async () => {
+    try {
+      const response = await signInWithPopup(auth, provider);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="w-full min-h-screen bg-[#f3f3f3] flex items-center justify-center px-6 py-20">
       <motion.div
@@ -34,6 +44,7 @@ function Auth() {
         </p>
 
         <motion.button
+          onClick={handleGoogleAuth}
           whileHover={{ opacity: 0.9, scale: 1.03 }}
           whileTap={{ opacity: 1, scale: 0.98 }}
           className="w-full flex items-center justify-center gap-3 py-3 bg-black text-white rounded-full shadow-md cursor-pointer"
